@@ -19,22 +19,22 @@ import java.util.List;
 public class UserEndpoint {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    @GET
-    @Path("all")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response getAllUsers(){
-        EntityManager em = EMF_Creator.createEntityManagerFactory().createEntityManager();
-        List<UserDto> userDtos = new ArrayList<>();
-        try {
-            List<User> users = em.createQuery("SELECT u FROM User u", User.class).getResultList();
-            for (User user : users) {
-                userDtos.add(new UserDto(user));
-            }
-            return Response.ok(GSON.toJson(userDtos)).build();
-        } finally {
-            em.close();
-        }
-    }
+//    @GET
+//    @Path("all")
+//    @Produces({MediaType.APPLICATION_JSON})
+//    public Response getAllUsers(){
+//        EntityManager em = EMF_Creator.createEntityManagerFactory().createEntityManager();
+//        List<UserDto> userDtos = new ArrayList<>();
+//        try {
+//            List<User> users = em.createQuery("SELECT u FROM User u", User.class).getResultList();
+//            for (User user : users) {
+//                userDtos.add(new UserDto(user));
+//            }
+//            return Response.ok(GSON.toJson(userDtos)).build();
+//        } finally {
+//            em.close();
+//        }
+//    }
 
 //    @POST
 //    @Path("create")

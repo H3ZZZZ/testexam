@@ -72,6 +72,20 @@ public class UserFacade {
         return user;
     }
 
+    //    public User create(String name, String password, String faceitnickname) {
+//        FaceitUser faceitUser = new FaceitUser(faceitnickname, "idlalala13567");
+//        CommunityPlayer communityPlayer = new CommunityPlayer(faceitUser);
+//        Community community = new Community("abekattene");
+//        community.addCommunityPlayer(communityPlayer);
+//        User user = new User(name, password, faceitUser);
+//        user.addCommunity(community);
+//        EntityManager em = emf.createEntityManager();
+//        em.getTransaction().begin();
+//        em.persist(user);
+//        em.getTransaction().commit();
+//        return user;
+//    }
+
     public static String getFaceitId(String faceitnickname) throws IOException, IndexOutOfBoundsException {
         URL url = new URL("https://open.faceit.com/data/v4/search/players?nickname=" + faceitnickname + "&game=csgo&offset=0&limit=1");
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();

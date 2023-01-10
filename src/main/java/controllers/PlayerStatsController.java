@@ -24,7 +24,7 @@ public class PlayerStatsController {
 
     public static void main(String[] args) throws IOException {
 //        emf = EMF_Creator.createEntityManagerFactory();
-        PlayerStatsController controller = new PlayerStatsController();
+//        PlayerStatsController controller = new PlayerStatsController();
 
 //        PlayerStatsDto playerStatsDto = controller.fetchIdImgEloLvl("TACOCS");
 //        PlayerStatsDto playerStatsDto = controller.fetchIdImgEloLvl("H3ZZ");

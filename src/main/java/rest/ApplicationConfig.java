@@ -31,11 +31,7 @@ public class ApplicationConfig extends Application {
         resources.add(security.RolesAllowedFilter.class);
         resources.add(security.errorhandling.AuthenticationExceptionMapper.class);
         resources.add(security.errorhandling.NotAuthorizedExceptionMapper.class);
-        resources.add(rest.PlayerStatsResource.class);
-        resources.add(MapStatsResource.class);
-        resources.add(MatchroomResource.class);
-        resources.add(DidWePlayResource.class);
-        resources.add(CommunityResource.class);
+//        resources.add(rest.PlayerStatsResource.class);
     }
     
 }
