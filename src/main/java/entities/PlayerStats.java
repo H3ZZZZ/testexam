@@ -1,6 +1,6 @@
 package entities;
 
-import dto.PlayerStatsDto;
+import dtos.PlayerStatsDto;
 
 public class PlayerStats {
     private final String nickname;

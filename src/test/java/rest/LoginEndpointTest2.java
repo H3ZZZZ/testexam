@@ -8,6 +8,7 @@ import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import java.net.URI;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.UriBuilder;
@@ -18,11 +19,12 @@ import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import utils.EMF_Creator;
 
 //Disabled
-public class LoginEndpointTest {
+public class LoginEndpointTest2 {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";

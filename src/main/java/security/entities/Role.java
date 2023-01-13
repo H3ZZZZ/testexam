@@ -25,7 +25,7 @@ public class Role implements Serializable {
     @NotNull
     @Column(name = "role_name")
     private String roleName;
-    
+
     @ManyToMany(mappedBy = "roleList")
     private Set<User> userList = new LinkedHashSet<>();
 

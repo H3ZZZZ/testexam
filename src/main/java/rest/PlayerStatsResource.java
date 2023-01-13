@@ -12,7 +12,7 @@
 //import javax.ws.rs.core.MediaType;
 //
 //import controllers.PlayerStatsController;
-//import dto.PlayerStatsDto;
+//import dtos.PlayerStatsDto;
 //import entities.PlayerStats;
 //import utils.EMF_Creator;
 //import javax.ws.rs.Path;
