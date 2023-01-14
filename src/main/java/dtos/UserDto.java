@@ -11,11 +11,10 @@ import java.util.Objects;
  */
 public class UserDto implements Serializable {
     @NotNull
-    private int userId;
-    @NotNull
     private String userName;
     @NotNull
     private String userPass;
+
 
     public UserDto() {
     }
@@ -25,13 +24,6 @@ public class UserDto implements Serializable {
         this.userPass = user.getUserPass();
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public String getUserName() {
         return userName;
@@ -54,20 +46,18 @@ public class UserDto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDto entity = (UserDto) o;
-        return Objects.equals(this.userId, entity.userId) &&
-                Objects.equals(this.userName, entity.userName) &&
+        return  Objects.equals(this.userName, entity.userName) &&
                 Objects.equals(this.userPass, entity.userPass);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, userPass);
+        return Objects.hash(userName, userPass);
     }
 
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
-                "userId = " + userId + ", " +
                 "userName = " + userName + ", " +
                 "userPass = " + userPass + ")";
     }

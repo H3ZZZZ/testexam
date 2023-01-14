@@ -96,9 +96,9 @@ public class UserFacade {
     public static void main(String[] args) throws IOException, AuthenticationException {
         EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactoryForTest();
 
+
         UserFacade userFacade = UserFacade.getUserFacade(EMF);
-        userFacade.create("christian", "123sophia", new Role("admin"));
-        User userExist = userFacade.getVeryfiedUser("christian", "123sophia");
+        userFacade.remove("christian");
 
 //        boolean test = checkUserExists("christian");
 //        System.out.println(test);

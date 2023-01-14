@@ -5,4 +5,12 @@ POST http://localhost:8080/api/user/create
 Content-Type: application/json
 #User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
 
-{"username": "christian", "password": "hartmann", "role":  "admin"}
+{"username": "christian", "password": "hartmann", "role": "admin"}
+
+###
+
+POST http://localhost:8080/api/user/remove
+Content-Type: application/json
+#User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+{"username": "christian2"}

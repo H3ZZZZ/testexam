@@ -64,7 +64,7 @@ public class UserEndpoint {
     @Consumes({MediaType.APPLICATION_JSON})
     public boolean removeUser(String prompt) {
         JsonObject json = JsonParser.parseString(prompt).getAsJsonObject();
-        String userName = json.get("user_name").getAsString();
+        String userName = json.get("username").getAsString();
         try {
             EntityManager em = EMF_Creator.createEntityManagerFactory().createEntityManager();
             facade.remove(userName);
