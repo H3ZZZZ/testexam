@@ -1,5 +1,6 @@
 package facades;
-
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -58,6 +59,9 @@ public class UserFacade {
             return false;
         }
     }
+
+
+
 
     public User getVeryfiedUser(String username, String password) throws AuthenticationException {
         EntityManager em = emf.createEntityManager();

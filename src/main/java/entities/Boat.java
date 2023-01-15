@@ -102,6 +102,10 @@ public class Boat {
         this.harbour = harbour;
     }
 
+    public void addOwner (Owner owner) {
+        owners.add(owner);
+    }
+
     public Set<Owner> getOwners() {
         return owners;
     }

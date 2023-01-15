@@ -8,6 +8,13 @@ Content-Type: application/json
 {"username": "christian", "password": "hartmann", "role": "admin"}
 
 ###
+POST https://frederikhess.dk/tomcat/exam/api/user/create
+Content-Type: application/json
+#User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+{"username": "frede", "password": "hess", "role": "admin"}
+
+###
 
 POST http://localhost:8080/api/user/remove
 Content-Type: application/json
