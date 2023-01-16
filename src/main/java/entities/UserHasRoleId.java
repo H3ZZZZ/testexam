@@ -1,4 +1,4 @@
-package security.entities;
+package entities;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -33,6 +33,9 @@ public class UserHasRoleId implements Serializable {
 
     public void setFkUserName(String fkUserName) {
         this.fkUserName = fkUserName;
+    }
+
+    public UserHasRoleId() {
     }
 
     @Override

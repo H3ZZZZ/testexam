@@ -5,14 +5,14 @@ POST http://localhost:8080/api/user/create
 Content-Type: application/json
 #User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
 
-{"username": "christian", "password": "hartmann", "role": "admin"}
+{"username": "nyuser", "password": "123", "role": 15, "email": "nyuser.dk"}
 
 ###
 POST https://frederikhess.dk/tomcat/exam/api/user/create
 Content-Type: application/json
 #User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
 
-{"username": "frede", "password": "hess", "role": "admin"}
+{"username": "frede", "password": "hess", "role": "admin", "email": "Testemail.dk"}
 
 ###
 
@@ -21,3 +21,36 @@ Content-Type: application/json
 #User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
 
 {"username": "christian2"}
+
+###
+
+POST http://localhost:8080/api/trip/create
+Content-Type: application/json
+#User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+{"name": "christian2", "startdate": "2023-01-16T11:50:18.941Z", "enddate": "2023-01-16T11:50:18.941Z", "location": "Nordhavn", "packing_list": "sandaler og solbriller", "guide_id": 1}
+
+###
+POST http://localhost:8080/api/guide/create
+Content-Type: application/json
+#User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+{"name": "FrederikGuide", "gender": "male", "birth_year": "1995", "profile": "Er dansk", "image_url": "urlbillede"}
+
+###
+POST http://localhost:8080/api/trip/join/1/frede
+Content-Type: application/json
+
+###
+PUT http://localhost:8080/api/trip/update
+Content-Type: application/json
+#User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+{"id": 1, "guide_id": 2}
+
+###
+
+DELETE http://localhost:8080/api/trip/remove/2
+Content-Type: application/json
+
+###

@@ -3,23 +3,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import security.entities.Role;
-import security.entities.User;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
 
+import dtos.RoleDto;
+import entities.User;
+import security.entities.Role;
 import security.errorhandling.AuthenticationException;
 import utils.EMF_Creator;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * @author lam@cphbusiness.dk
@@ -87,10 +82,16 @@ public class UserFacade {
         }
         return false;
     }
-    public User create(String name, String password, Role role) {
+    public User create(String name, String password, RoleDto roledto, String email) {
+
         EntityManager em = emf.createEntityManager();
-        User user = new User(name, password);
-        user.addRole(role);
+        Role existingRole = em.find(Role.class, roledto.getId());
+        User user = new User(name, password, email);
+        if(existingRole != null ) {
+            Set<Role> roles = new LinkedHashSet<>(user.getRoles());
+            roles.add(existingRole);
+            user.setRoles(roles);
+        }
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
@@ -101,8 +102,9 @@ public class UserFacade {
         EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactoryForTest();
 
 
-        UserFacade userFacade = UserFacade.getUserFacade(EMF);
-        userFacade.remove("christian");
+//        UserFacade userFacade = UserFacade.getUserFacade(EMF);
+//        userFacade.create("christian")
+//        userFacade.remove("christian");
 
 //        boolean test = checkUserExists("christian");
 //        System.out.println(test);

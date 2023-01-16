@@ -1,13 +1,15 @@
 //package rest;
 //
-//import security.entities.User;
-//import security.entities.Role;
-//
+//import dtos.RoleDto;
+//import entities.User;
+//import facades.UserFacade;
 //import io.restassured.RestAssured;
 //import static io.restassured.RestAssured.given;
 //import io.restassured.http.ContentType;
 //import io.restassured.parsing.Parser;
 //import java.net.URI;
+//import java.util.LinkedHashSet;
+//import java.util.Set;
 //import javax.persistence.EntityManager;
 //import javax.persistence.EntityManagerFactory;
 //import javax.ws.rs.core.UriBuilder;
@@ -19,6 +21,7 @@
 //import org.junit.jupiter.api.BeforeAll;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;
+//import security.entities.Role;
 //import utils.EMF_Creator;
 //
 ////Disabled
@@ -65,23 +68,25 @@
 //        try {
 //            em.getTransaction().begin();
 //            //Delete existing users and roles to get a "fresh" database
-//            em.createNativeQuery("delete from user_roles").executeUpdate();
+//            em.createNativeQuery("delete from user_has_roles").executeUpdate();
 //            em.createQuery("delete from User").executeUpdate();
 //            em.createQuery("delete from Role").executeUpdate();
+//            UserFacade userFacade = UserFacade.getUserFacade(emf);
 //            Role userRole = new Role("user");
 //            Role adminRole = new Role("admin");
-//            User user = new User("user", "test");
-//            user.addRole(userRole);
-//            User admin = new User("admin", "test");
-//            admin.addRole(adminRole);
-//            User both = new User("user_admin", "test");
-//            both.addRole(userRole);
-//            both.addRole(adminRole);
-//            em.persist(user);
-//            em.persist(admin);
-//            em.persist(both);
-//            //System.out.println("Saved test data to database");
+//            em.persist(userRole);
+//            em.persist(adminRole);
 //            em.getTransaction().commit();
+//
+//            userFacade.create("user","123",new RoleDto(userRole.getId()), "usermail");
+//            userFacade.create("admin","123",new RoleDto(adminRole.getId()), "adminmail");
+//            em.getTransaction().begin();
+//            User bothUser = userFacade.create("both","123",new RoleDto(userRole.getId()), "bothmail");
+//            Set<Role> roles = new LinkedHashSet<>(bothUser.getRoles());
+//            roles.add(adminRole);
+//            bothUser.setRoles(roles);
+//            em.getTransaction().commit();
+//            //System.out.println("Saved test data to database");
 //        } finally {
 //            em.close();
 //        }

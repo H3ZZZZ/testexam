@@ -3,8 +3,8 @@
 //import facades.UserFacade;
 //
 //import org.junit.jupiter.api.Test;
-//import security.entities.Role;
-//import security.entities.User;
+//import security.security.entities.Role;
+//import security.security.entities.User;
 //import utils.EMF_Creator;
 //
 //import javax.persistence.EntityManagerFactory;

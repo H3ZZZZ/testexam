@@ -1,8 +1,7 @@
 package dtos;
 
-import security.entities.Role;
-
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,25 +9,29 @@ import java.util.Objects;
  * A DTO for the {@link security.entities.Role} entity
  */
 public class RoleDto implements Serializable {
-    @NotNull
-    private int roleId;
+    private Integer id;
+    @Size(max = 255)
     @NotNull
     private String roleName;
 
     public RoleDto() {
     }
 
-    public RoleDto(Role role) {
-        this.roleId = role.getRoleId();
-        this.roleName = role.getRoleName();
+    public RoleDto(Integer id, String roleName) {
+        this.id = id;
+        this.roleName = roleName;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public RoleDto(Integer id) {
+        this.id = id;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getRoleName() {
@@ -44,19 +47,19 @@ public class RoleDto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RoleDto entity = (RoleDto) o;
-        return Objects.equals(this.roleId, entity.roleId) &&
+        return Objects.equals(this.id, entity.id) &&
                 Objects.equals(this.roleName, entity.roleName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roleId, roleName);
+        return Objects.hash(id, roleName);
     }
 
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
-                "roleId = " + roleId + ", " +
+                "id = " + id + ", " +
                 "roleName = " + roleName + ")";
     }
 }

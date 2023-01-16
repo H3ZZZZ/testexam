@@ -1,47 +1,28 @@
 package security.entities;
 
-import java.io.Serializable;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-/**
- *
- * @author Plaul
- */
 @Entity
 @Table(name = "role")
-public class Role implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Role {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @NotNull
-    @Column(name = "role_id")
-    private int roleId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id", nullable = false)
+    private Integer id;
 
+    @Size(max = 255)
     @NotNull
-    @Column(name = "role_name")
+    @Column(name = "role_name", nullable = false)
     private String roleName;
 
-    @ManyToMany(mappedBy = "roleList")
-    private Set<User> userList = new LinkedHashSet<>();
-
-    public Role() {
+    public Integer getId() {
+        return id;
     }
 
-    public Role(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getRoleName() {
@@ -52,24 +33,10 @@ public class Role implements Serializable {
         this.roleName = roleName;
     }
 
-    public Set<User> getUserList() {
-        return userList;
+    public Role() {
     }
 
-    public void setUserList(Set<User> userList) {
-        this.userList = userList;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Role)) return false;
-        Role role = (Role) o;
-        return getRoleId() == role.getRoleId();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getRoleId());
+    public Role(String roleName) {
+        this.roleName = roleName;
     }
 }

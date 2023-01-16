@@ -10,12 +10,15 @@ import com.nimbusds.jose.JWSSigner;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import entities.User;
 import facades.UserFacade;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import security.entities.User;
+
 import errorhandling.API_Exception;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -23,6 +26,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import security.errorhandling.AuthenticationException;
 import errorhandling.GenericExceptionMapper;
 import javax.persistence.EntityManagerFactory;
@@ -51,10 +55,12 @@ public class LoginEndpoint {
 
         try {
             User user = USER_FACADE.getVeryfiedUser(username, password);
-            String token = createToken(username, user.getRolesAsStrings());
+            List<String> roles = user.getRolesAsStrings();
+            String token = createToken(username, roles);
             JsonObject responseJson = new JsonObject();
             responseJson.addProperty("username", username);
             responseJson.addProperty("token", token);
+
             return Response.ok(new Gson().toJson(responseJson)).build();
 
         } catch (JOSEException | AuthenticationException ex) {

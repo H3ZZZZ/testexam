@@ -1,7 +1,7 @@
 //package rest;
 //
-//import security.entities.User;
-//import security.entities.Role;
+//import security.security.entities.User;
+//import security.security.entities.Role;
 //
 //import io.restassured.RestAssured;
 //import static io.restassured.RestAssured.given;
