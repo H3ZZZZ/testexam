@@ -38,7 +38,7 @@ public class GuideEndpoint {
     }
 
     @POST
-//    @RolesAllowed("admin")
+    //@RolesAllowed("admin")
     @Path("create")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
