@@ -58,7 +58,7 @@ public class TripEndpoint {
 
 
     @POST
-    //@RolesAllowed("admin")
+//    @RolesAllowed("admin")
     @Path("create")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
@@ -83,7 +83,7 @@ public class TripEndpoint {
     }
 
     @PUT
-    //@RolesAllowed("admin")
+//    @RolesAllowed("admin")
     @Path("update")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})

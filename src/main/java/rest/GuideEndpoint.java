@@ -11,6 +11,7 @@ import facades.GuideFacade;
 import facades.TripFacade;
 import utils.EMF_Creator;
 
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.servlet.ServletContext;
 import javax.ws.rs.*;
@@ -37,7 +38,7 @@ public class GuideEndpoint {
     }
 
     @POST
-    //@RolesAllowed("admin")
+//    @RolesAllowed("admin")
     @Path("create")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
