@@ -86,7 +86,7 @@ public class LoginEndpointTest {
             roles.add(adminRole);
             bothUser.setRoles(roles);
             em.getTransaction().commit();
-            //System.out.println("Saved test data to database");
+            //System.out.println("Saved test data to database");;
         } finally {
             em.close();
         }
