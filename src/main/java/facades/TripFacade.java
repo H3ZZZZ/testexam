@@ -2,28 +2,19 @@ package facades;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dtos.OwnerDto;
-import dtos.RoleDto;
 import dtos.TripDto;
-import dtos.UserDto;
 import entities.*;
-import security.entities.Role;
 import security.errorhandling.AuthenticationException;
 import utils.EMF_Creator;
 import utils.LocalDateTimeTypeAdapter;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author lam@cphbusiness.dk

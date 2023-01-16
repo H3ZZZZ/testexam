@@ -8,15 +8,20 @@ import facades.UserFacade;
 import security.entities.Role;
 import utils.EMF_Creator;
 
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import java.util.ArrayList;
 import java.util.List;
 
 @Path("user")
 public class UserEndpoint {
+    @Context
+    SecurityContext securityContext;
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     EntityManager em = EMF_Creator.createEntityManagerFactory().createEntityManager();
     UserFacade facade = UserFacade.getUserFacade(em.getEntityManagerFactory());
@@ -92,4 +97,22 @@ public class UserEndpoint {
             return false;
         }
     }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("userTest")
+    @RolesAllowed("user")
+    public String getFromUser() {
+        String thisuser = securityContext.getUserPrincipal().getName();
+        return "{\"msg\": \"Hello to User: " + thisuser + "\"}";
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("adminTest")
+    @RolesAllowed("admin")
+    public String getFromAdmin() {
+        String thisuser = securityContext.getUserPrincipal().getName();
+        return "{\"msg\": \"Hello to (admin) User: " + thisuser + "\"}";
+    }
+
 }
