@@ -42,10 +42,13 @@ public class GuideFacade {
         }
         return instance;
     }
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
 
     public Response getAllGuides() {
         List<GuideDto> guideDtos = new ArrayList<>();
-        EntityManager em = EMF_Creator.createEntityManagerFactory().createEntityManager();
+        EntityManager em = getEntityManager();
         try {
             List<Guide> guides = em.createQuery("SELECT g FROM Guide g", Guide.class).getResultList();
             for (Guide guide : guides) {
